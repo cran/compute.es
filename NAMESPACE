@@ -1,0 +1,6 @@
+#NAMESPACE file for compute.es
+#compute.es version 0.2.1, for R versions 2.14.0 and above
+
+# Export all names
+exportPattern(".")
+
