@@ -1,3 +1,28 @@
-Changes from compute.es version 0.2 to 0.2.1
-+ Namespace file added to comply with R version 2.14 and above
+==============================================================================
+Changes in compute.es 0.2-2 (10-18-2013)
+=============================================================================
+
+Major changes
+-------------
+
+    o Effect sizes can now be calculated from both scalar values 
+      and vector data.
+
+    o Functions will now output confidence intervals, and p-values,
+      along with NNT (number needed to treat), U3 (Cohen's U_3 distribution
+      overlap statistic), CLES (Common Language Effect Size) and
+      Cliff's Delta (success rate difference).
+
+Minor changes
+-------------
+
+    o More user friendly output than previous versions
+
+    o Documentation changed accordingly.
+
+
+
+==============================================================================
+First version in R CRAN compute.es 0.0-1
+==============================================================================
 
