@@ -253,4 +253,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \code{\link{a.mes}},
 \code{\link{a.mes2}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON MEANS (WITH POOLED SD) STATISTIC: 
+
+mes2(10, 12, 1, 30, 30)
+}
 \keyword{ arith }

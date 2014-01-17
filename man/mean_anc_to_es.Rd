@@ -267,4 +267,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \code{\link{mes2}},
 \code{\link{a.mes2}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON MEAN VALUES FROM ANCOVA F-STATISTIC: 
+
+a.mes(10, 12, 1, 30, 30, .2, 2)
+}
 \keyword{ arith }

@@ -15,14 +15,14 @@
  (7) Other statistics: NNT, U3, CLES, Cliff's Delta \cr
  }
 
-The functions in this package can easily derive these ES's from a single study or from multiple studies.  The \code{compute.es} package uses recommended conversion formulas as described in \emph{The Handbook of Research Synthesis and Meta-Analysis} (Cooper, Hedges, & Valentine, 2009). 
+The functions in this package can compute the effect sizes from a single study or from multiple studies simultaneously.  The \code{compute.es} package uses recommended conversion formulas as described in \emph{The Handbook of Research Synthesis and Meta-Analysis} (Cooper, Hedges, & Valentine, 2009). 
 }
 \details{
 \tabular{ll}{
 Package: \tab compute.es\cr
 Type: \tab Package\cr
-Version: \tab 0.2-2\cr
-Date: \tab 2013-10-18\cr
+Version: \tab 0.2-3\cr
+Date: \tab 2014-01-17\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }

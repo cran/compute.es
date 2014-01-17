@@ -252,4 +252,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \seealso{
 \code{\link{fes}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON F-STATISTIC FROM ANCOVA: 
+
+a.fes(3, 30, 30, .4, 2)
+}
 \keyword{ arith }

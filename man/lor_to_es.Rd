@@ -1,6 +1,6 @@
 \name{lores}
 \alias{lores}
-\title{Log Odds Ratio to Standardized Mean Difference (d)
+\title{Log Odds Ratio to Effect Size
 }
 \description{Converts a log odds ratio to an effect size of \eqn{d} (mean difference), \eqn{g} (unbiased estimate of \eqn{d}), \eqn{r} (correlation coefficient), \eqn{z'} (Fisher's \eqn{z}), and log odds ratio. The variances, confidence intervals and p-values of these estimates are also computed, along with NNT (number needed to treat), U3 (Cohen's \eqn{U_(3)} overlapping proportions of distributions), CLES (Common Language Effect Size) and Cliff's Delta.
 }
@@ -257,5 +257,10 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \seealso{
 \code{\link{propes}},
 \code{\link{failes}}
+}
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON LOG ODDS RATIO STATISTIC: 
+
+lores(2, .3, 30, 30)
 }
 \keyword{ arith }

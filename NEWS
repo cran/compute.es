@@ -1,4 +1,19 @@
 ==============================================================================
+Changes in compute.es 0.2-3 (01-17-2014)
+=============================================================================
+
+Minor changes
+-------------
+
+    o Fixed bug that did not allow output to be saved as object for single value
+      inputs.
+
+    o Added simple examples for running functions in the documentation.
+
+    o Minor clarifications to function arguments based on user feedback
+
+
+==============================================================================
 Changes in compute.es 0.2-2 (10-18-2013)
 =============================================================================
 
@@ -23,6 +38,6 @@ Minor changes
 
 
 ==============================================================================
-First version in R CRAN compute.es 0.0-1
+First version in R CRAN compute.es 0.1
 ==============================================================================
 

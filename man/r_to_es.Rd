@@ -217,4 +217,9 @@ Valentine, J. C. & Cooper, H. (2003). \emph{Effect size substantive interpretati
 Issues in the interpretation of effect sizes.} Washington, DC: What Works Clearinghouse.
 
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON CORRELATION STATISTIC: 
+
+res(.3, n=30)
+}
 \keyword{ arith }

@@ -8,7 +8,7 @@
 a.pes(p, n.1, n.2, R, q, tail = "two", level=95, dig=2, id=NULL, data=NULL)
 }
 \arguments{
-  \item{p}{One-tailed p-value reported in primary study.
+  \item{p}{One- or two-tailed p-value.
 }
    \item{n.1}{Treatment group sample size.
 }
@@ -18,7 +18,7 @@ a.pes(p, n.1, n.2, R, q, tail = "two", level=95, dig=2, id=NULL, data=NULL)
 }
   \item{q}{number of covariates.
 }
-\item{tail}{One or two-tailed p-value. Default is \code{two}.
+\item{tail}{One or two-tailed p-value. The argument is scalar only--it can only take on a single value of 'one' or 'two'. Default is \code{two}. 
 }
 \item{level}{Confidence level. Default is \code{95\%}.
 }
@@ -266,5 +266,10 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 }
 \seealso{
 \code{\link{pes}}
+}
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON P-VALUE FROM ANCOVA STATISTIC: 
+
+a.pes(.3, 30, 30, .2, 3)
 }
 \keyword{ arith }

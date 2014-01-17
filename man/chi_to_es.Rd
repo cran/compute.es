@@ -239,4 +239,10 @@ Valentine, J. C. & Cooper, H. (2003). \emph{Effect size substantive interpretati
 Issues in the interpretation of effect sizes.} Washington, DC: What Works Clearinghouse.
 
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON CHI^2 STATISTIC: 
+
+chies(4, 30)
+}
+
 \keyword{ arith }

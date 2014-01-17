@@ -184,6 +184,17 @@ des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -332,6 +343,17 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -467,6 +489,17 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -596,6 +629,17 @@ tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -729,6 +773,17 @@ fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -876,6 +931,17 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -957,7 +1023,7 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
     cat("\n")
     
-    out <- round(data.frame(id=id, N.total=n, n=n, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
+    out <- round(data.frame(id=id, N.total=n,  d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, 
                             #g=g, var.g=var.g,l.g=lower.g, u.g=upper.g, U3.g=U3.g, cl.g=cl.g, pval.g=pval.g,
                             r=r, var.r=var.r, l.r=lower.r,
@@ -965,9 +1031,9 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
                             OR=exp(lor), l.or=exp(lower.lor), u.or=exp(upper.lor), pval.or=pval.lor, 
                             lOR=lor, l.lor=lower.lor, u.lor=upper.lor, pval.lor=pval.lor,
                             NNT=nnt), dig)
-    return(out)
-    
+    return(out)    
   }
+  else{
   cat("\n")
   message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
   cat("\n")
@@ -1010,7 +1076,19 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
     "Other:","\n", "\n", 
     "NNT =", round(nnt, dig),"\n", 
     "Total N =", n
-  )
+    )
+    out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                        U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                        #g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                        #U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, 
+                        r = r, 
+                        var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                        fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                        OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                        pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                        u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+  invisible(out)
+  }
 }
 
 # Formulas for computing effect sizes in designs with independent groups
@@ -1155,6 +1233,17 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL
           "NNT =", round(nnt, dig),"\n", 
           "Total N =", n
         )
+        out <- round(data.frame(N.total = n, n.1 = n.1, 
+                                n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                                U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                                g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                                U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                                var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                                fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                                OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                                pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                                u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+        invisible(out)
       }
 }
 
@@ -1298,6 +1387,17 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, i
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -1435,6 +1535,17 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -1571,6 +1682,17 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -1724,6 +1846,17 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -1854,6 +1987,17 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1 = n.1, 
+                            n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 } 
 
@@ -1987,6 +2131,16 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -2132,6 +2286,17 @@ failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, n.1=n.1, n.2=n.0, 
+                            d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 
@@ -2256,6 +2421,16 @@ chies <- function(chi.sq,  n,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
+                            U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
+                            g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
+                            U3.g = U3.g, cl.g = cl.g, pval.g = pval.g, r = r, 
+                            var.r = var.r, l.r = lower.r, u.r = upper.r, pval.r = pval.r, 
+                            fisher.z = z, var.z = var.z, l.z = lower.z, u.z = upper.z, 
+                            OR = exp(lor), l.or = exp(lower.lor), u.or = exp(upper.lor), 
+                            pval.or = pval.lor, lOR = lor, l.lor = lower.lor, 
+                            u.lor = upper.lor, pval.lor = pval.lor, NNT = nnt), dig)
+    invisible(out)
   }
 }
 

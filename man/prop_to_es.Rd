@@ -253,4 +253,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \code{\link{failes}},
 \code{\link{lores}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON PROPORTIONS: 
+
+propes(.50,.30, 30, 30)
+}
 \keyword{ arith }

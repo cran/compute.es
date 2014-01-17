@@ -245,4 +245,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \seealso{
 \code{\link{a.tes}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON T STATISTIC: 
+
+tes(3, 30, 30)
+}
 \keyword{ arith }

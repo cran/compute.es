@@ -14,7 +14,7 @@ pes(p, n.1, n.2, tail = "two", level=95, dig=2, id=NULL, data=NULL)
 }
   \item{n.2}{Sample size of comparison group.
 }
- \item{tail}{One or two-tailed p-value. Default is \code{two}.
+ \item{tail}{One or two-tailed p-value. The argument is scalar only--it can only take on a single value of 'one' or 'two'. Default is \code{two}. 
 }
 \item{level}{Confidence level. Default is \code{95\%}.
 }
@@ -258,5 +258,10 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 }
 \seealso{
 \code{\link{a.pes}}
+}
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON P-VALUE: 
+
+pes(.045,30,30)
 }
 \keyword{ arith }

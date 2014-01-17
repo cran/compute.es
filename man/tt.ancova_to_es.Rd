@@ -253,4 +253,9 @@ Issues in the interpretation of effect sizes.} Washington, DC: What Works Cleari
 \seealso{
 \code{\link{tes}}
 }
+\examples{ 
+# CALCULATE SEVERAL EFFECT SIZES BASED ON T STATISTIC (FROM ANCOVA): 
+
+a.tes(3, 30, 30, .3, 2)
+}
 \keyword{ arith }
