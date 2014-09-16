@@ -1,7 +1,7 @@
 \name{compute.es-package}
 \alias{compute.es-package}
 \docType{package}
-\title{Compute Effect Sizes
+\title{Compute Effect Sizes in R
 }
 \description{This package provides a comprehensive set of tools/functions to easily derive and/or convert statistics generated from one's study (or from those reported in a published study) to all of the common effect size estimates, along with their variances, confidence intervals, and p-values. Several additional statistics are generated, including NNT (number needed to treat), U3 (Cohen's U3 distribution overlap statistic), CLES (Common Language Effect Size) and Cliff's Delta (success rate difference). The \code{compute.es} package's functions will convert a variety of statistics, such as means and standard deviations, t-test or p-value and sample size, to estimates of:
 
@@ -21,8 +21,8 @@ The functions in this package can compute the effect sizes from a single study o
 \tabular{ll}{
 Package: \tab compute.es\cr
 Type: \tab Package\cr
-Version: \tab 0.2-3\cr
-Date: \tab 2014-01-17\cr
+Version: \tab 0.2-4\cr
+Date: \tab 2014-09-16\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }

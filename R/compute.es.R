@@ -6,6 +6,148 @@
 # 3. create gui for this (and web application!)
 
 
+# ## UPDATE:  SINGLE UNIFYING FUNCTION--IN PROCESS
+# es <- function(...){
+#   mf <- match.call(expand.dots = TRUE)
+#       args <- match(c("d", "n.1", "n.2", 
+#                       "r", "var.r", "n",  
+#                       "m.1", "m.2", "sd.1", "sd.2", "n.1", "n.2",  
+#                       "s.pooled",  
+#                       "p", "tail",  
+#                       "t",  
+#                       "lor", "var.lor",  
+#                       "chi.sq",  
+#                       "f", 
+#                       "B", "D", "n.0", 
+#                       "p1", "p2", "n.ab", "n.cd",   
+#                       "R", "q",  
+#                       "m.1.adj", "m.2.adj", "sd.adj",
+#                       "level", "dig", "id","data"), names(mf), 
+#                     0)
+#     mf <- mf[c(1, args)]
+#     mf$drop.unused.levels <- TRUE
+# #   if(!is.null(mf$d)) {    
+# #     mf.d <- mf[[match("d", names(mf))]]
+# #     es <- eval(mf.d, data, enclos = sys.frame(sys.parent()))
+# #     mf.n.1 <- mf[[match("n.1", names(mf))]]
+# #     n.1 <- eval(mf.n.1, data, enclos = sys.frame(sys.parent()))
+# #     mf.n.2 <- mf[[match("n.2", names(mf))]]
+# #     n.2 <- eval(mf.n.2, data, enclos = sys.frame(sys.parent()))
+# #     mf.id <- mf[[match("id", names(mf))]]
+# #     id <- eval(mf.id, data, enclos = sys.frame(sys.parent()))
+# #     
+# #   }
+# #   if(!is.null(mf$r)) {
+# #     mf.r <- mf[[match("r", names(mf))]]
+# #     es <- eval(mf.r, data, enclos = sys.frame(sys.parent()))
+# #     mf.var.r <- mf[[match("var.r", names(mf))]]
+# #     var.r <- eval(mf.var.r, data, enclos = sys.frame(sys.parent()))
+# #     mf.n <- mf[[match("n", names(mf))]]
+# #     n <- eval(mf.n, data, enclos = sys.frame(sys.parent()))
+# #     mf.id <- mf[[match("id", names(mf))]]
+# #     id <- eval(mf.id, data, enclos = sys.frame(sys.parent()))
+# #    
+# #  }
+#   
+#   out <- mf #data.frame(mf) #data.frame(id, es)
+#   return(out)
+#   #out <- data.frame(d,n.1,n.2) #mf
+#   #return(out)
+#   #dat <- list(...)             
+#   #return(dat)
+#   
+# }
+# 
+# 
+# es <- function(d, n.1, n.2, # DES(d, n.1, n.2)
+#    r, var.r = NULL, n,  # RES(r, var.r = NULL, n)
+#    m.1, m.2, sd.1, sd.2,  # MES(m.1, m.2, sd.1, sd.2, n.1, n.2)
+#    s.pooled,  # MES2(m.1, m.2, s.pooled, n.1, n.2,)
+#    p, tail = "two",  # PES(p, n.1, n.2, tail = "two")
+#    t,  # TES(t, n.1, n.2)
+#    lor, var.lor,  # LORES(lor, var.lor, n.1, n.2)
+#    chi.sq,  # CHIES(chi.sq, n)
+#    f, # FES(f, n.1, n.2)
+#    B, D, n.0, # FAILES(B, D, n.1, n.0)
+#    p1, p2, n.ab, n.cd,   # PROPES(p1, p2, n.ab, n.cd)
+#    R, q,   # A.FES(f, n.1, n.2, R, q)
+#    m.1.adj, m.2.adj, sd.adj,  # A.MES(m.1.adj, m.2.adj, sd.adj); A.MES2(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q, ...)
+#      # A.PES(p, n.1, n.2, R, q, )
+#      # A.TES(t, n.1, n.2, R, q, )
+#    level = 95, cer = 0.2, dig = 2, id = NULL, data = NULL, ...) {
+#       #if (!is.null(data)) {
+#         mf <- match.call()
+#         temp <- as.list(mf)
+#         
+#         args <- match(c("d", "n.1", "n.2", 
+#                     "r", "var.r", "n",  
+#                     "m.1", "m.2", "sd.1", "sd.2", "n.1", "n.2",  
+#                     "s.pooled",  
+#                     "p", "tail",  
+#                     "t",  
+#                     "lor", "var.lor",  
+#                     "chi.sq",  
+#                     "f", 
+#                     "B", "D", "n.0", 
+#                     "p1", "p2", "n.ab", "n.cd",   
+#                     "R", "q",  
+#                     "m.1.adj", "m.2.adj", "sd.adj",
+#                     "level", "dig", "id","data"), names(mf), 
+#                   0)
+#         mf <- mf[c(1, args)]
+#         mf$drop.unused.levels <- TRUE
+#         mf.d <- mf[[match("d", names(mf))]]
+#         d <- eval(mf.d, data, enclos = sys.frame(sys.parent()))
+#         mf.n.1 <- mf[[match("n.1", names(mf))]]
+#         n.1 <- eval(mf.n.1, data, enclos = sys.frame(sys.parent()))
+#         mf.n.2 <- mf[[match("n.2", names(mf))]]
+#         n.2 <- eval(mf.n.2, data, enclos = sys.frame(sys.parent()))
+#         mf.r <- mf[[match("r", names(mf))]]
+#         r <- eval(mf.r, data, enclos = sys.frame(sys.parent()))
+#         mf.var.r <- mf[[match("var.r", names(mf))]]
+#         var.r <- eval(mf.var.r, data, enclos = sys.frame(sys.parent()))
+#         mf.n <- mf[[match("n", names(mf))]]
+#         n <- eval(mf.n, data, enclos = sys.frame(sys.parent()))
+#         mf.id <- mf[[match("id", names(mf))]]
+#         id <- eval(mf.id, data, enclos = sys.frame(sys.parent()))
+#      # }
+#      #out <-  temp  #mf #data.frame(mf) #data.frame(id, es)
+#      #return(out)
+# #   if(!missing(d) && !missing(n.1) && !missing(n.2)) { 
+# #     des(d, n.1, n.2, ...)
+# #   }
+# #   if(!missing(r) && !missing(n))  { 
+# #     res(r, n, ...)
+# #     }
+# #     else{
+# #     stop("Missing argument(s) to calculate effect sizes")
+# #     }
+# #   #if(!missing(r) && !missing(n)) { res(r, n, ... )}
+# #   #}
+# 
+#   if(!is.null(temp$d) && !is.null(temp$n.1) && !is.null(temp$n.2)) { 
+#     des(d, n.1, n.2, ...)
+#   }
+#   if(!is.null(temp$r) && !is.null(temp$n))  { 
+#     res(r, n, ...)
+#     }
+#     else{
+#     stop("Missing argument(s) to calculate effect sizes")
+#     }
+#   #if(!missing(r) && !missing(n)) { res(r, n, ... )}
+#   #}
+#   
+# }
+# 
+# 
+# es(d=.3, n.1=30, n.2=30)
+# es(d=d, n.1=nT, n.2=nC, id=id, data=dat)
+# es(r=.3, n=30)
+# es(r=r, n=n, id=id, data=dar)
+# dar <- data.frame(id=1:30,
+#                   r=rnorm(30, 0.5, 0.1),
+#                   n=round(rnorm(30, 30, 5), 0))
+
 
 # CONVENIENCE FUNCTIONS
 
@@ -58,7 +200,7 @@ ztor <- function(z) (exp(2 * z) - 1)/(1 + exp(2 * z))
 
 
 
-des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
+des <- function(d, n.1, n.2, level=95, cer=.2,  dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("d", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -123,12 +265,12 @@ des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -141,9 +283,10 @@ des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
+    if (verbose) {
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
     
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
@@ -184,6 +327,7 @@ des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -211,9 +355,9 @@ des <- function(d, n.1, n.2, level=95, dig=2, id=NULL, data=NULL) {
 # EXAMPLE
 # md <- data.frame(m.1=rnorm(30,30),m.2=rnorm(30,30),sd.1=rnorm(30,30),sd.2=rnorm(30,30),
 #                  n.1=rnorm(30,30), n.2=rnorm(30,30), id=1:30)
-# mes(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=id, data=md)
+# mes(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=id, data=md)
 
-mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
+mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("m.1","m.2","sd.1","sd.2", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -282,12 +426,12 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -300,10 +444,10 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -343,6 +487,7 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -362,7 +507,7 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
 # s.pooled (pooled standard deviation), n.1 (treatment), 
 # n.2 (comparison/control).
 
-mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
+mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("m.1","m.2","s.pooled", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -428,12 +573,12 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -446,10 +591,10 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -489,6 +634,7 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -507,7 +653,7 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) 
 # t (t-test value of treatment v comparison), n.1 (treatment),
 # n.2 (comparison/control).
 
-tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
+tes <- function(t, n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("t", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -568,12 +714,12 @@ tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -586,10 +732,10 @@ tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -629,6 +775,7 @@ tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -648,7 +795,7 @@ tes <- function(t, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
 # n.2 (comparison/control).
 
 
-fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
+fes <- function(f,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("f", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -712,12 +859,12 @@ fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -730,10 +877,10 @@ fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -773,6 +920,7 @@ fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -790,7 +938,7 @@ fes <- function(f,n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
 # (4) Study reported: 
 # p-value,  n.1 (treatment), n.2 (comparison/control), tail (one or two tailed?).
 
-pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
+pes <- function(p, n.1, n.2, tail = "two",level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("p", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -870,12 +1018,12 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -888,10 +1036,10 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -931,6 +1079,7 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -948,7 +1097,7 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
 
 
 #  Pearson r to effect size.
-res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
+res <- function(r, var.r = NULL, n ,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("r", "var.r", "n", "level", "dig", "id","data"), names(mf), 
@@ -1016,12 +1165,12 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n,  d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, 
@@ -1034,10 +1183,10 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
     return(out)    
   }
   else{
-  cat("\n")
-  message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-  cat("\n")
-  
+#   cat("\n")
+#   message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#   cat("\n")
+    if (verbose) {
   cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
     "Mean Differences ES:","\n", "\n", 
     "d [",level,"%CI] =", round(d, dig),
@@ -1077,6 +1226,7 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
     "NNT =", round(nnt, dig),"\n", 
     "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                         U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
                         #g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
@@ -1100,7 +1250,7 @@ res <- function(r, var.r = NULL, n ,level=95, dig=2, id=NULL, data=NULL) {
 # n.2 (comparison/control), R (covariate outcome correlation or multiple
 # correlation), q (number of covariates).
 
-a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
+a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("m.1.adj","m.2.adj","sd.adj", "n.1", "n.2", "R", "q",
@@ -1172,12 +1322,12 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL
                     lower.lor <- lor - crit * sqrt(var.lor)
                     upper.lor <- lor + crit * sqrt(var.lor)
                     
-                    nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+                    nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
                     
                     if (!is.null(data)) {
-                    cat("\n")
-                    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-                    cat("\n")
+#                     cat("\n")
+#                     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#                     cat("\n")
                     
                     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                     cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1190,10 +1340,10 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL
                     
       }
       else{
-        cat("\n")
-        message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-        cat("\n")
-        
+#         cat("\n")
+#         message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#         cat("\n")
+        if (verbose) {
         cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
           "Mean Differences ES:","\n", "\n", 
           "d [",level,"%CI] =", round(d, dig),
@@ -1233,6 +1383,7 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL
           "NNT =", round(nnt, dig),"\n", 
           "Total N =", n
         )
+        }
         out <- round(data.frame(N.total = n, n.1 = n.1, 
                                 n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                                 U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -1255,7 +1406,7 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, dig=2, id=NULL
 # n.2 (comparison/control), R (covariate outcome correlation or multiple
 # correlation), q (number of covariates).
 
-a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
+a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("m.1.adj","m.2.adj","s.pooled", "n.1", "n.2", "R", "q",
@@ -1326,12 +1477,12 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, i
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1344,10 +1495,10 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, i
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -1387,6 +1538,7 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, i
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -1407,7 +1559,7 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, dig=2, i
 # n.2 (comparison/control), R (covariate outcome correlation or multiple
 # correlation), q (number of covariates).
 
-a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
+a.tes <- function(t, n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("t", "n.1", "n.2", "R", "q",
@@ -1474,12 +1626,12 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1492,10 +1644,10 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -1535,6 +1687,7 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -1554,7 +1707,7 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
 # n.2 (comparison/control),R (covariate outcome correlation or multiple
 # correlation), q (number of covariates).
 
-a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
+a.fes<-function(f,n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("f", "n.1", "n.2", "R", "q",
@@ -1621,12 +1774,12 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1639,10 +1792,10 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -1682,6 +1835,7 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -1701,7 +1855,7 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, dig=2, id=NULL, data=NULL) {
 # n.2 (comparison/control), R (covariate outcome correlation or multiple
 # correlation), q (number of covariates).
 
-a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data=NULL) {
+a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("p", "n.1", "n.2", "R", "q",
@@ -1785,12 +1939,12 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1803,10 +1957,10 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -1846,6 +2000,7 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -1862,7 +2017,7 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, dig=2, id=NULL, data
 
 # computing es from log odds ratio
 
-lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
+lores <- function(lor, var.lor, n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("lor", "var.lor", "n.1", "n.2", "level", "dig", "id","data"), names(mf), 
@@ -1926,12 +2081,12 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.2, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -1944,10 +2099,10 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -1987,6 +2142,7 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1 = n.1, 
                             n.2 = n.2, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -2003,7 +2159,7 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, dig=2, id=NULL, data=NULL) {
 
 # compute or from proportions
 
-propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
+propes <- function(p1, p2, n.ab, n.cd,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("p1", "p2", "n.ab", "n.cd", "level", "dig", "id","data"), names(mf), 
@@ -2070,12 +2226,12 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -2088,10 +2244,10 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -2131,6 +2287,7 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
                             g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 
@@ -2149,7 +2306,7 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, dig=2, id=NULL, data=NULL) {
 # (B = # tmt failure; D = # non-tmt failure) and the sample size
 # for each group (n.1 & n.0 respectively):
 
-failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
+failes <- function(B, D, n.1, n.0,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("B", "D", "n.1", "n.0", "level", "dig", "id","data"), names(mf), 
@@ -2225,12 +2382,12 @@ failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, n.1=n.1, n.2=n.0, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -2243,10 +2400,10 @@ failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -2286,6 +2443,7 @@ failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, n.1=n.1, n.2=n.0, 
                             d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
@@ -2302,7 +2460,7 @@ failes <- function(B, D, n.1, n.0,level=95, dig=2, id=NULL, data=NULL) {
 
 # Converting Chi-squared statistic with 1 df to es
 
-chies <- function(chi.sq,  n,level=95, dig=2, id=NULL, data=NULL) {
+chies <- function(chi.sq,  n,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=NULL) {
   if (!is.null(data)) {
     mf <- match.call()
     args <- match(c("chi.sq", "n",  "level", "dig", "id","data"), names(mf), 
@@ -2360,12 +2518,12 @@ chies <- function(chi.sq,  n,level=95, dig=2, id=NULL, data=NULL) {
   lower.lor <- lor - crit * sqrt(var.lor)
   upper.lor <- lor + crit * sqrt(var.lor)
   
-  nnt <- 1/(2 * pnorm(d/sqrt(2)) - 1)
+  nnt <- 1/(pnorm(d- qnorm(1-cer))-cer)
   
   if (!is.null(data)) {
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
-    cat("\n")
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR VECTOR INPUT)")
+#     cat("\n")
     
     out <- round(data.frame(id=id, N.total=n, d=d, var.d=var.d, l.d=lower.d, u.d=upper.d, U3.d=U3.d,
                             cl.d=cl.d, cliffs.d=cliffs.d, pval.d=pval.d, g=g, var.g=var.g,l.g=lower.g, 
@@ -2378,10 +2536,10 @@ chies <- function(chi.sq,  n,level=95, dig=2, id=NULL, data=NULL) {
     
   }
   else{
-    cat("\n")
-    message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
-    cat("\n")
-    
+#     cat("\n")
+#     message("    EFFECT SIZE CALCULATION (FOR SINGLE INPUT)")
+#     cat("\n")
+    if (verbose) {
     cat(#"\n", "\n", "   EFFECT SIZE CALCULATION (FOR SINGLE INPUT)", "\n","\n",
       "Mean Differences ES:","\n", "\n", 
       "d [",level,"%CI] =", round(d, dig),
@@ -2421,6 +2579,7 @@ chies <- function(chi.sq,  n,level=95, dig=2, id=NULL, data=NULL) {
       "NNT =", round(nnt, dig),"\n", 
       "Total N =", n
     )
+    }
     out <- round(data.frame(N.total = n, d = d, var.d = var.d, l.d = lower.d, u.d = upper.d, 
                             U3.d = U3.d, cl.d = cl.d, cliffs.d = cliffs.d, pval.d = pval.d, 
                             g = g, var.g = var.g, l.g = lower.g, u.g = upper.g, 

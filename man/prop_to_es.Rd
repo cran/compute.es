@@ -5,7 +5,8 @@
 \description{Converts proportions (typically seen in studies reporting odds ratios) to an effect size of  \eqn{d} (mean difference), \eqn{g} (unbiased estimate of \eqn{d}), \eqn{r} (correlation coefficient), \eqn{z'} (Fisher's \eqn{z}), and log odds ratio. The variances, confidence intervals and p-values of these estimates are also computed, along with NNT (number needed to treat), U3 (Cohen's \eqn{U_(3)} overlapping proportions of distributions), CLES (Common Language Effect Size) and Cliff's Delta.
 }
 \usage{
-propes(p1, p2, n.ab, n.cd, level=95, dig=2, id=NULL, data=NULL)
+propes(p1, p2, n.ab, n.cd, 
+       level = 95, cer = 0.2, dig = 2, verbose = TRUE, id=NULL, data=NULL)
 }
 \arguments{
   \item{p1}{Proportion one.
@@ -18,7 +19,11 @@ propes(p1, p2, n.ab, n.cd, level=95, dig=2, id=NULL, data=NULL)
 }
 \item{level}{Confidence level. Default is \code{95\%}.
 }
+\item{cer}{Control group Event Rate (e.g., proportion of cases showing recovery). Default is \code{0.2} (=20\% of cases showing recovery). \bold{CER is used exclusively for NNT output.} \emph{This argument can be ignored if input is not a mean difference effect size}.  Note: NNT output (described below) will NOT be meaningful if based on anything other than input from mean difference effect sizes (i.e., input of Cohen's d, Hedges' g will produce meaningful output, while correlation coefficient input will NOT produce meaningful NNT output).
+}
 \item{dig}{Number of digits to display. Default is \code{2} digits.
+}
+\item{verbose}{Print output from scalar values? If yes, then verbose=TRUE; otherwise, verbose=FALSE. Default is TRUE.
 }
 \item{id}{Study identifier. Default is \code{NULL}, assuming a scalar is used as input. If input is a vector dataset (i.e., \code{data.frame}, with multiple values to be computed), enter the name of the study identifier here.
 }
@@ -206,13 +211,12 @@ where \eqn{n} is the total sample size for groups 1 and 2.
 
 \emph{Number needed to treat (NNT).} NNT is interpreted as the number of participants that would need to be treated in one group (e.g., intervention group) in order to have one additional positive outcome over that of the outcome of a randomly selected participant in the other group (e.g., control group). In the \code{compute.es} package, NNT is calculated directly from d (Furukawa & Leucht, 2011), assuming relative normality of distribution and equal variances across groups, as follows:
   
-  \deqn{NNT=%
+ \deqn{NNT=%
         \frac{1}%
-{ 2 * \Phi(\frac{d}%
-             {\sqrt{2}})-1}
+   {\Phi{(d-\Psi{(CER}))}-CER}
   }{
     NNT=%
-    1/(2*Phi(d/sqrt(2))-1)       
+    1/(Phi(d-Psi(CER))-CER)       
   }
 
 \emph{U3.} Cohen (1988) proposed a method for characterizing effect sizes by expressing them in terms of (normal) distribution overlap, called U3. This statistic describes the percentage of scores in one group that are exceeded by the mean score in another group. If the population means are equal then half of the scores in the treatment group exceed half the scores in the comparison group, and U3 = 50\%. As the population mean difference increases, U3 approaches 100\% (Valentine & Cooper, 2003). 
