@@ -111,13 +111,13 @@ For information and user-friendly R packages to conduct a meta-analysis see:
 
 Menu-Driven Meta-Analysis (Graphical User Interface): 
 
-\bold{RcmdrPlugin.MA package}:  \url{http://CRAN.R-project.org/package=RcmdrPlugin.MA}
+\bold{RcmdrPlugin.MA package}:  \url{https://CRAN.R-project.org/package=RcmdrPlugin.MA}
 
 Meta-Analysis with Correlations: 
 
-\bold{MAc package}:  \url{http://CRAN.R-project.org/package=MAc}
+\bold{MAc package}:  \url{https://CRAN.R-project.org/package=MAc}
 
 Meta-Analysis with Mean Differences: 
 
-\bold{MAd package}:  \url{http://CRAN.R-project.org/package=MAd}
+\bold{MAd package}:  \url{https://CRAN.R-project.org/package=MAd}
 }

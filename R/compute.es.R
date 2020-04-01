@@ -75,68 +75,50 @@
 #      # A.PES(p, n.1, n.2, R, q, )
 #      # A.TES(t, n.1, n.2, R, q, )
 #    level = 95, cer = 0.2, dig = 2, id = NULL, data = NULL, ...) {
-#       #if (!is.null(data)) {
-#         mf <- match.call()
-#         temp <- as.list(mf)
-#         
-#         args <- match(c("d", "n.1", "n.2", 
-#                     "r", "var.r", "n",  
-#                     "m.1", "m.2", "sd.1", "sd.2", "n.1", "n.2",  
-#                     "s.pooled",  
-#                     "p", "tail",  
-#                     "t",  
-#                     "lor", "var.lor",  
-#                     "chi.sq",  
-#                     "f", 
-#                     "B", "D", "n.0", 
-#                     "p1", "p2", "n.ab", "n.cd",   
-#                     "R", "q",  
-#                     "m.1.adj", "m.2.adj", "sd.adj",
-#                     "level", "dig", "id","data"), names(mf), 
-#                   0)
-#         mf <- mf[c(1, args)]
-#         mf$drop.unused.levels <- TRUE
-#         mf.d <- mf[[match("d", names(mf))]]
-#         d <- eval(mf.d, data, enclos = sys.frame(sys.parent()))
-#         mf.n.1 <- mf[[match("n.1", names(mf))]]
-#         n.1 <- eval(mf.n.1, data, enclos = sys.frame(sys.parent()))
-#         mf.n.2 <- mf[[match("n.2", names(mf))]]
-#         n.2 <- eval(mf.n.2, data, enclos = sys.frame(sys.parent()))
-#         mf.r <- mf[[match("r", names(mf))]]
-#         r <- eval(mf.r, data, enclos = sys.frame(sys.parent()))
-#         mf.var.r <- mf[[match("var.r", names(mf))]]
-#         var.r <- eval(mf.var.r, data, enclos = sys.frame(sys.parent()))
-#         mf.n <- mf[[match("n", names(mf))]]
-#         n <- eval(mf.n, data, enclos = sys.frame(sys.parent()))
-#         mf.id <- mf[[match("id", names(mf))]]
-#         id <- eval(mf.id, data, enclos = sys.frame(sys.parent()))
-#      # }
+# #       if (!is.null(data)) {
+# #         mf <- match.call()
+# #         args <- match(c("d", "n.1", "n.2", 
+# #                     "r", "var.r", "n",  
+# #                     "m.1", "m.2", "sd.1", "sd.2", "n.1", "n.2",  
+# #                     "s.pooled",  
+# #                     "p", "tail",  
+# #                     "t",  
+# #                     "lor", "var.lor",  
+# #                     "chi.sq",  
+# #                     "f", 
+# #                     "B", "D", "n.0", 
+# #                     "p1", "p2", "n.ab", "n.cd",   
+# #                     "R", "q",  
+# #                     "m.1.adj", "m.2.adj", "sd.adj",
+# #                     "level", "dig", "id","data"), names(mf), 
+# #                   0)
+# #         mf <- mf[c(1, args)]
+# #         mf$drop.unused.levels <- TRUE
+# #         mf.d <- mf[[match("d", names(mf))]]
+# #         d <- eval(mf.d, data, enclos = sys.frame(sys.parent()))
+# #         mf.n.1 <- mf[[match("n.1", names(mf))]]
+# #         n.1 <- eval(mf.n.1, data, enclos = sys.frame(sys.parent()))
+# #         mf.n.2 <- mf[[match("n.2", names(mf))]]
+# #         n.2 <- eval(mf.n.2, data, enclos = sys.frame(sys.parent()))
+# #         mf.r <- mf[[match("r", names(mf))]]
+# #         r <- eval(mf.r, data, enclos = sys.frame(sys.parent()))
+# #         mf.var.r <- mf[[match("var.r", names(mf))]]
+# #         var.r <- eval(mf.var.r, data, enclos = sys.frame(sys.parent()))
+# #         mf.n <- mf[[match("n", names(mf))]]
+# #         n <- eval(mf.n, data, enclos = sys.frame(sys.parent()))
+# #         mf.id <- mf[[match("id", names(mf))]]
+# #         id <- eval(mf.id, data, enclos = sys.frame(sys.parent()))
+# #       }
 #      #out <-  temp  #mf #data.frame(mf) #data.frame(id, es)
 #      #return(out)
-# #   if(!missing(d) && !missing(n.1) && !missing(n.2)) { 
-# #     des(d, n.1, n.2, ...)
-# #   }
-# #   if(!missing(r) && !missing(n))  { 
-# #     res(r, n, ...)
-# #     }
-# #     else{
-# #     stop("Missing argument(s) to calculate effect sizes")
-# #     }
-# #   #if(!missing(r) && !missing(n)) { res(r, n, ... )}
-# #   #}
-# 
-#   if(!is.null(temp$d) && !is.null(temp$n.1) && !is.null(temp$n.2)) { 
-#     des(d, n.1, n.2, ...)
-#   }
-#   if(!is.null(temp$r) && !is.null(temp$n))  { 
-#     res(r, n, ...)
-#     }
-#     else{
+#   if(!missing(d) && !missing(n.1) && !missing(n.2)) { 
+#     out <- des(d=d, n.1=n.1, n.2=n.2, ...)
+#   } else if(!missing(r) && !missing(n))  { 
+#     out <-res(r=r, n=n, ...)
+#   } else{
 #     stop("Missing argument(s) to calculate effect sizes")
 #     }
-#   #if(!missing(r) && !missing(n)) { res(r, n, ... )}
-#   #}
-#   
+#   return(out)
 # }
 # 
 # 
@@ -147,7 +129,12 @@
 # dar <- data.frame(id=1:30,
 #                   r=rnorm(30, 0.5, 0.1),
 #                   n=round(rnorm(30, 30, 5), 0))
-
+# # SAMPLE DATA
+# dat <- data.frame(id=1:30,
+#                   d=rnorm(30, 0.8, 0.1),
+#                   nT=round(rnorm(30, 30, 5), 0),
+#                   nC=round(rnorm(30, 30, 5), 0)
+# )
 
 # CONVENIENCE FUNCTIONS
 
@@ -235,8 +222,8 @@ des <- function(d, n.1, n.2, level=95, cer=.2,  dig=2, verbose=TRUE, id=NULL, da
   
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  #crit <- qt(alpha/2, df, lower.tail = FALSE)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -387,7 +374,8 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE
   g<-j*d
   var.g<-j^2*var.d
   a <- ((n.1 + n.2)^2)/(n.1*n.2)  # will correct for inbalanced n, if applicable
-  r <- d/sqrt((d^2) + a)
+  #r <- d/sqrt((d^2) + a)
+  r <- d/sqrt((d^2) + (n.1 + n.2 - 2) * (n.1 + n.2)/(n.1 * n.2))
   var.r <- (a^2*var.d)/(d^2 + a)^3
   lor <- pi*d/sqrt(3)
   var.lor <- pi^2*var.d/3
@@ -396,8 +384,7 @@ mes <- function(m.1,m.2,sd.1,sd.2,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -534,7 +521,8 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE
   g<-j*d
   var.g<-j^2*var.d
   a <- ((n.1 + n.2)^2)/(n.1*n.2)  # will correct for inbalanced n, if applicable
-  r <- d/sqrt((d^2) + a)
+  #r <- d/sqrt((d^2) + a)
+  r <- d/sqrt((d^2) + (n.1 + n.2 - 2) * (n.1 + n.2)/(n.1 * n.2))
   var.r <- (a^2*var.d)/(d^2 + a)^3
   lor <- pi*d/sqrt(3)
   var.lor <- pi^2*var.d/3
@@ -543,8 +531,7 @@ mes2 <- function(m.1,m.2,s.pooled,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -684,8 +671,7 @@ tes <- function(t, n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -829,8 +815,7 @@ fes <- function(f,n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, data=
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -988,8 +973,7 @@ pes <- function(p, n.1, n.2, tail = "two",level=95, cer=.2, dig=2, verbose=TRUE,
   }
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -1135,8 +1119,7 @@ res <- function(r, var.r = NULL, n ,level=95, cer=.2, dig=2, verbose=TRUE, id=NU
   df <- n-1
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -1292,8 +1275,7 @@ a.mes <- function(m.1.adj,m.2.adj,sd.adj,n.1, n.2, R, q,level=95, cer=.2, dig=2,
    var.z <- 1/(n-3) 
     # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-                    #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
                     zval.d <- d/sqrt(var.d)
                     pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
                     lower.d <- d - crit * sqrt(var.d)
@@ -1447,8 +1429,7 @@ a.mes2 <- function(m.1.adj, m.2.adj, s.pooled, n.1, n.2, R, q,level=95, cer=.2, 
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -1596,8 +1577,7 @@ a.tes <- function(t, n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NU
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -1744,8 +1724,7 @@ a.fes<-function(f,n.1, n.2, R, q,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL,
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -1909,8 +1888,7 @@ a.pes <- function(p, n.1, n.2, R, q, tail = "two",level=95, cer=.2, dig=2, verbo
   }
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -2051,8 +2029,7 @@ lores <- function(lor, var.lor, n.1, n.2,level=95, cer=.2, dig=2, verbose=TRUE, 
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -2196,8 +2173,7 @@ propes <- function(p1, p2, n.ab, n.cd,level=95, cer=.2, dig=2, verbose=TRUE, id=
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -2352,8 +2328,7 @@ failes <- function(B, D, n.1, n.0,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)
@@ -2488,8 +2463,7 @@ chies <- function(chi.sq,  n,level=95, cer=.2, dig=2, verbose=TRUE, id=NULL, dat
   var.z <- 1/(n-3) 
   # UPDATE: ADDED FOLLOWING TO EACH FUNCTION (FOR P-VAL, CI, U3, CLES, CLIFF'S DELTA, NNT)
   alpha <- (100 - level)/100
-  crit <- qt(alpha/2, df, lower.tail = FALSE)
-  #crit <- qnorm(alpha)
+  crit <- qnorm(alpha/2, lower.tail = FALSE)
   zval.d <- d/sqrt(var.d)
   pval.d <- 2 * pt(abs(zval.d), df , lower.tail = FALSE)
   lower.d <- d - crit * sqrt(var.d)

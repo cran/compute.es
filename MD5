@@ -1,10 +1,10 @@
-08f2024c86c08ebc0b4b41bce6624b78 *DESCRIPTION
-214b210217f655732cf89bdbd021915d *NAMESPACE
+3a2ef080b1262239fffb4dee1e07eb33 *DESCRIPTION
+7a49ad0075dfc5c87f2ef4d49532dec1 *NAMESPACE
 03cc098dcbfe9d6c514ea61947972356 *NEWS
-96a1f365f33a673503f98ab567ee651b *R/compute.es.R
-6adf4aaa836865dedbd1eb04ca888731 *inst/CITATION
+12c3867fe701c1ddb9a21dbd7288cd21 *R/compute.es.R
+2b5a32bf23fd258c287a579f40f0b023 *inst/CITATION
 ae397ce8f5d46bff7c5412ddd9c25a6f *man/chi_to_es.Rd
-103c144bb3e2c39b1f71455c0cc01183 *man/compute.es-package.Rd
+8beba6de6a9ae0e0bb7a55fc2df0c7b8 *man/compute.es-package.Rd
 84db9a4e6e6c0ad2504c1e5a6e268952 *man/d_to_es.Rd
 448958e1f846d177d15bd1f5fa14af02 *man/f.ancova_to_es.Rd
 6d23ed7ab3ed20887b5e73a1758590ab *man/f_to_es.Rd
